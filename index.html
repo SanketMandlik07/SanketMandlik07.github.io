@@ -1,50 +1,191 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-D3E6H6KRF1"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-D3E6H6KRF1');
-</script>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>Sanket's Practice Website</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Sanket Mandlik — Computer Science student exploring Python, data science, AI and automation. Explore projects, skills and certifications.">
+  <meta name="theme-color" content="#0b1020">
+  <title>Sanket Mandlik | Developer Portfolio</title>
+  <style>
+    :root {
+      --bg: #0b1020; --panel: #111a2e; --panel2: #0e1729;
+      --text: #edf2ff; --muted: #a5b1c8; --line: rgba(166,188,226,.16);
+      --blue: #72a7ff; --cyan: #67e8f9; --purple: #a78bfa;
+      --max: 1080px;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0; color: var(--text); background:
+        radial-gradient(ellipse at 15% 0%, rgba(69,113,214,.17), transparent 36%),
+        radial-gradient(ellipse at 90% 15%, rgba(129,86,220,.13), transparent 32%), var(--bg);
+      font: 16px/1.7 Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+    a { color: inherit; text-decoration: none; }
+    .wrap { width: min(var(--max), calc(100% - 40px)); margin: auto; }
+    header { position: sticky; top: 0; z-index: 10; backdrop-filter: blur(16px); background: rgba(11,16,32,.82); border-bottom: 1px solid var(--line); }
+    nav { min-height: 72px; display: flex; align-items: center; justify-content: space-between; gap: 20px; }
+    .brand { font-weight: 800; letter-spacing: -.04em; font-size: 1.12rem; }
+    .brand span { color: var(--blue); }
+    .navlinks { display: flex; flex-wrap: wrap; gap: 23px; color: var(--muted); font-size: .92rem; }
+    .navlinks a:hover, .textlink:hover { color: var(--cyan); }
+    .hero { padding: 104px 0 88px; display: grid; grid-template-columns: 1.45fr .75fr; gap: 48px; align-items: center; }
+    .eyebrow { color: var(--cyan); text-transform: uppercase; letter-spacing: .16em; font-size: .78rem; font-weight: 800; }
+    h1 { font-size: clamp(2.8rem, 7vw, 5.3rem); line-height: 1.04; letter-spacing: -.065em; margin: 15px 0 18px; }
+    .gradient { background: linear-gradient(100deg, var(--blue), var(--cyan), var(--purple)); -webkit-background-clip: text; background-clip: text; color: transparent; }
+    .lead { color: var(--muted); max-width: 650px; font-size: 1.12rem; }
+    .actions { display: flex; gap: 13px; flex-wrap: wrap; margin-top: 28px; }
+    .btn { display: inline-flex; align-items: center; justify-content: center; padding: 11px 18px; border-radius: 12px; font-weight: 750; border: 1px solid var(--line); transition: .2s ease; }
+    .btn.primary { color: #081020; background: linear-gradient(100deg, var(--blue), var(--cyan)); border: 0; }
+    .btn:hover { transform: translateY(-2px); }
+    .profile-card { padding: 28px; border: 1px solid var(--line); border-radius: 24px; background: linear-gradient(145deg, rgba(25,39,68,.92), rgba(15,23,41,.9)); box-shadow: 0 25px 70px rgba(0,0,0,.24); }
+    .avatar { width: 86px; height: 86px; display: grid; place-items: center; border-radius: 24px; font-size: 2rem; font-weight: 900; background: linear-gradient(135deg, #477fe2, #8b74dc); color: white; margin-bottom: 20px; }
+    .profile-card h2 { margin: 0 0 4px; font-size: 1.25rem; }
+    .profile-card p { color: var(--muted); margin: 0; }
+    .status { display: inline-flex; align-items: center; gap: 8px; color: #b9f6d0; font-size: .84rem; margin-top: 18px; }
+    .dot { width: 8px; height: 8px; border-radius: 50%; background: #4ade80; box-shadow: 0 0 12px #4ade80; }
+    section { padding: 68px 0; scroll-margin-top: 76px; }
+    .section-head { margin-bottom: 28px; }
+    .section-head h2 { font-size: clamp(1.8rem, 4vw, 2.55rem); letter-spacing: -.045em; margin: 5px 0; }
+    .section-head p { color: var(--muted); margin: 0; }
+    .grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 18px; }
+    .card { padding: 24px; background: rgba(17,26,46,.82); border: 1px solid var(--line); border-radius: 18px; }
+    .card h3 { margin: 0 0 9px; font-size: 1.12rem; }
+    .card p { color: var(--muted); margin: 0; }
+    .tags { display: flex; flex-wrap: wrap; gap: 9px; margin-top: 18px; }
+    .tag { border: 1px solid var(--line); background: rgba(114,167,255,.08); color: #c8d9fa; padding: 5px 11px; border-radius: 999px; font-size: .82rem; }
+    .project-top { display: flex; justify-content: space-between; align-items: start; gap: 12px; }
+    .project-type { color: var(--cyan); font-size: .76rem; font-weight: 800; text-transform: uppercase; letter-spacing: .1em; }
+    .textlink { display: inline-block; color: var(--blue); font-weight: 700; margin-top: 17px; }
+    .timeline { border-left: 1px solid rgba(114,167,255,.4); padding-left: 22px; }
+    .timeline .card { position: relative; margin-bottom: 16px; }
+    .timeline .card:before { content: ""; position: absolute; left: -29px; top: 28px; width: 11px; height: 11px; border-radius: 50%; background: var(--cyan); box-shadow: 0 0 0 5px var(--bg); }
+    .contact { text-align: center; padding: 42px; background: linear-gradient(135deg, rgba(51,91,164,.24), rgba(121,83,190,.18)); border: 1px solid var(--line); border-radius: 24px; }
+    .contact p { color: var(--muted); max-width: 580px; margin: 10px auto 22px; }
+    footer { padding: 28px 0 40px; color: var(--muted); font-size: .88rem; border-top: 1px solid var(--line); }
+    footer .wrap { display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
+    @media (max-width: 760px) {
+      .hero { grid-template-columns: 1fr; padding: 76px 0 58px; gap: 30px; }
+      .profile-card { max-width: 440px; }
+      .navlinks { gap: 12px; font-size: .82rem; }
+      .grid { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 470px) {
+      .wrap { width: min(100% - 28px, var(--max)); }
+      nav { align-items: flex-start; flex-direction: column; padding: 15px 0; }
+      .navlinks { width: 100%; }
+      .hero { padding-top: 58px; }
+      .contact { padding: 28px 18px; }
+    }
+  </style>
 </head>
-
 <body>
+  <header>
+    <nav class="wrap" aria-label="Main navigation">
+      <a class="brand" href="#home">Sanket<span>.</span></a>
+      <div class="navlinks">
+        <a href="#about">About</a><a href="#skills">Skills</a><a href="#projects">Projects</a>
+        <a href="#education">Education</a><a href="#contact">Contact</a>
+      </div>
+    </nav>
+  </header>
 
-    <h1>Welcome to My Website 🚀</h1>
+  <main>
+    <div class="wrap hero" id="home">
+      <div>
+        <div class="eyebrow">Computer Science Student · India</div>
+        <h1>Hi, I'm <span class="gradient">Sanket Mandlik.</span></h1>
+        <p class="lead">I’m a Computer Science student building my skills in Python, data analytics and web development. I enjoy learning by creating practical projects and exploring how AI can solve real-world problems.</p>
+        <div class="actions">
+          <a class="btn primary" href="#projects">Explore my work ↗</a>
+          <a class="btn" href="https://www.linkedin.com/in/sanket-mandlik-a93305432/" target="_blank" rel="noopener">Connect on LinkedIn</a>
+        </div>
+      </div>
+      <aside class="profile-card">
+        <div class="avatar" aria-hidden="true">SM</div>
+        <h2>Sanket Mandlik</h2>
+        <p>Aspiring Python Developer<br>Exploring Data Science & AI</p>
+        <div class="status"><span class="dot"></span> Learning, building and growing</div>
+      </aside>
+    </div>
 
-    <h2>Hello, I am Sanket Mandlik</h2>
+    <section id="about">
+      <div class="wrap">
+        <div class="section-head"><div class="eyebrow">A little about me</div><h2>Curious mind. Practical learning.</h2></div>
+        <div class="card">
+          <p>I’m currently pursuing a T.Y. B.Sc. in Computer Science. My focus is on strengthening my programming foundations and developing practical experience through projects, coursework and continuous learning. I’m especially interested in Python, data science, AI and automation.</p>
+        </div>
+      </div>
+    </section>
 
-    <p>I am a Computer Science student.</p>
+    <section id="skills">
+      <div class="wrap">
+        <div class="section-head"><div class="eyebrow">What I'm learning</div><h2>Skills & tools</h2><p>My current learning areas and tools — updated as I gain experience.</p></div>
+        <div class="grid">
+          <article class="card"><h3>Programming & Web</h3><p>Building programming fundamentals and simple web experiences.</p><div class="tags"><span class="tag">Python</span><span class="tag">HTML</span><span class="tag">Java · Learning</span></div></article>
+          <article class="card"><h3>Data & Databases</h3><p>Exploring data analysis workflows and relational databases.</p><div class="tags"><span class="tag">Data Analytics</span><span class="tag">EDA</span><span class="tag">SQL · Learning</span></div></article>
+          <article class="card"><h3>Developer Tools</h3><p>Using tools to write, manage and share code.</p><div class="tags"><span class="tag">GitHub</span><span class="tag">VS Code</span><span class="tag">Git · Learning</span></div></article>
+          <article class="card"><h3>Exploring Next</h3><p>Areas I’m working towards understanding through structured practice.</p><div class="tags"><span class="tag">Machine Learning</span><span class="tag">AI</span><span class="tag">Automation</span></div></article>
+        </div>
+      </div>
+    </section>
 
-    <p>
-        This is my first practice website created using
-        HTML and GitHub Pages.
-    </p>
+    <section id="projects">
+      <div class="wrap">
+        <div class="section-head"><div class="eyebrow">Selected work</div><h2>Projects & practice</h2><p>A few examples of what I have been learning and building.</p></div>
+        <div class="grid">
+          <article class="card">
+            <div class="project-top"><div><div class="project-type">Portfolio · Web</div><h3>Personal Portfolio Website</h3></div><span>01</span></div>
+            <p>My personal website built with HTML and GitHub Pages to introduce my learning journey and showcase my work.</p>
+            <div class="tags"><span class="tag">HTML</span><span class="tag">GitHub Pages</span></div>
+            <a class="textlink" href="https://github.com/SanketMandlik07/SanketMandlik07.github.io" target="_blank" rel="noopener">View repository ↗</a>
+          </article>
+          <article class="card">
+            <div class="project-top"><div><div class="project-type">Internship tasks · Data Science</div><h3>Virtual Vigilantes Data Science Tasks</h3></div><span>02</span></div>
+            <p>Practice work focused on Natural Language Processing (NLP) and Exploratory Data Analysis (EDA).</p>
+            <div class="tags"><span class="tag">Python</span><span class="tag">NLP</span><span class="tag">EDA</span></div>
+            <a class="textlink" href="https://github.com/SanketMandlik07/Virtual_Vigilantes_Data_Science_Tasks" target="_blank" rel="noopener">View repository ↗</a>
+          </article>
+          <article class="card">
+            <div class="project-top"><div><div class="project-type">College project</div><h3>SmartCareer AI Career System</h3></div><span>03</span></div>
+            <p>A college project exploring an AI-assisted career guidance system. Add a repository or live demo link when it is published.</p>
+            <div class="tags"><span class="tag">Python</span><span class="tag">MySQL</span><span class="tag">AI concept</span></div>
+          </article>
+          <article class="card">
+            <div class="project-top"><div><div class="project-type">Academic project</div><h3>Emergency Service Locator</h3></div><span>04</span></div>
+            <p>An academic project concept focused on helping users locate emergency services.</p>
+            <div class="tags"><span class="tag">College project</span><span class="tag">Problem solving</span></div>
+          </article>
+        </div>
+      </div>
+    </section>
 
-    <h2>My Skills</h2>
+    <section id="education">
+      <div class="wrap">
+        <div class="section-head"><div class="eyebrow">Learning journey</div><h2>Education & development</h2></div>
+        <div class="timeline">
+          <article class="card"><h3>T.Y. B.Sc. Computer Science</h3><p>Currently pursuing undergraduate studies in Computer Science.</p></article>
+          <article class="card"><h3>Continuous learning</h3><p>Developing skills through programming practice, data science coursework and technology certifications. Add certificate names and verification links here as you publish them.</p></article>
+        </div>
+      </div>
+    </section>
 
-    <ul>
-        <li>Python</li>
-        <li>HTML</li>
-        <li>Java</li>
-        <li>SQL</li>
-        <li>GitHub</li>
-    </ul>
+    <section id="contact">
+      <div class="wrap">
+        <div class="contact">
+          <div class="eyebrow">Let's connect</div>
+          <h2>Have a project or opportunity?</h2>
+          <p>I’m interested in connecting with fellow learners, developers and people working on meaningful technology projects.</p>
+          <div class="actions" style="justify-content:center">
+            <a class="btn primary" href="https://www.linkedin.com/in/sanket-mandlik-a93305432/" target="_blank" rel="noopener">LinkedIn ↗</a>
+            <a class="btn" href="https://github.com/SanketMandlik07" target="_blank" rel="noopener">GitHub ↗</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
 
-    <h2>My Goal</h2>
-
-    <p>
-        I am learning programming, web development,
-        data analytics and Google Analytics.
-    </p>
-
+  <footer><div class="wrap"><span>© <span id="year"></span> Sanket Mandlik</span><span>Designed and built with HTML & CSS.</span></div></footer>
+  <script>document.getElementById("year").textContent = new Date().getFullYear();</script>
 </body>
 </html>
